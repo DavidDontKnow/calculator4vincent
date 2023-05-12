@@ -60,8 +60,7 @@ add.addEventListener('click', () => {
         outputPrevious.textContent = `${previousNumber} ${operator}`;
         outputCurrent.textContent = currentNumber;
     }
-}
-)
+})
 
 subtract.addEventListener('click', () => {
     if (currentNumber !== '') {
@@ -71,8 +70,7 @@ subtract.addEventListener('click', () => {
         outputPrevious.textContent = `${previousNumber} ${operator}`;
         outputCurrent.textContent = currentNumber;
     }
-}
-)
+})
 
 multiply.addEventListener('click', () => {
     if (currentNumber !== '') {
@@ -82,8 +80,7 @@ multiply.addEventListener('click', () => {
         outputPrevious.textContent = `${previousNumber} ${operator}`;
         outputCurrent.textContent = currentNumber;
     }
-}
-)
+})
 
 divide.addEventListener('click', () => {
     if (currentNumber !== '') {
@@ -93,30 +90,26 @@ divide.addEventListener('click', () => {
         outputPrevious.textContent = `${previousNumber} ${operator}`;
         outputCurrent.textContent = currentNumber;
     }
-}
-)
+})
 
 equals.addEventListener('click', () => {
     if (currentNumber !== '' && previousNumber !== '') {
         outputPrevious.textContent = '';
         outputCurrent.textContent = operate(operator, Number(previousNumber), Number(currentNumber));
         previousNumber = '';
-        currentNumber = '';
+        currentNumber = `${outputCurrent.textContent}`;
     }
-}
-)
+})
 
 clear.addEventListener('click', () => {
     outputPrevious.textContent = '';
     outputCurrent.textContent = '';
     previousNumber = '';
     currentNumber = '';
-}
-)
+})
 
 backspace.addEventListener('click', () => {
     currentNumber = currentNumber.slice(0, -1);
     outputCurrent.textContent = currentNumber;
-}
-)
+})
 
