@@ -1,0 +1,36 @@
+body {
+    background-color: #495057;
+    font-family: monospace;
+    color: black;
+}
+
+.contaionerWraper {
+    max-width: 400px;
+    min-width: 400px;
+
+}
+
+.previous {
+    font-size: 12pt;
+}
+
+.current {
+    font-size: 23pt;
+}
+
+#output-display {
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 350px;
+    max-width: 350px;
+    background-color: aliceblue;
+    border: #495057 solid 1px;
+    border-radius: .375rem;
+    padding: 10px;
+    margin: 10px;
+}
+
+#btnContainer {
+    min-width: 350px;
+    max-width: 350px;
+}
