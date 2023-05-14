@@ -9,7 +9,7 @@ const divide = document.getElementById('divide');
 const equals = document.getElementById('equals');
 const numbers = document.querySelectorAll('.number');
 
-
+// sets up arithmetic functions
 function addNumber(a, b) {
     return a + b;
 }
@@ -26,6 +26,7 @@ function divideNumber(a, b) {
     return a / b;
 }
 
+// sets up operate function to be used in equals event listener
 function operate(operator, a, b) {
     switch (operator) {
         case '+':
@@ -39,20 +40,28 @@ function operate(operator, a, b) {
     }
 }
 
+// sets up variables to be used in event listeners
 let currentNumber = '';
 let previousNumber = '';
 let operator = '';
 
+// sets up event listeners for numbers and decimal
 numbers.forEach(number => {
     number.addEventListener('click', () => {
+        // if btn with number or decimal is clicked, add to currentNumber and display
         if (number.textContent >= 0 && number.textContent <= 9 || number.textContent === '.') {
             currentNumber += number.textContent;
+            // prints currentNumber to outputCurrent
             outputCurrent.textContent = currentNumber;
         }
     })
 })
 
+// sets up event listeners for operators
+
+
 add.addEventListener('click', () => {
+    // if previousNumber and currentNumber are not empty, operate and display ie. chaining operations
     if (previousNumber !== '' && currentNumber !== '') {
         previousNumber = operate(operator, Number(previousNumber), Number(currentNumber));
         currentNumber = '';
@@ -60,9 +69,12 @@ add.addEventListener('click', () => {
         outputPrevious.textContent = `${previousNumber} ${operator}`;
         outputCurrent.textContent = currentNumber;
     } else
+        // if currentNumber is not empty, set previousNumber to currentNumber and operator to +, display
         if (currentNumber !== '') {
             previousNumber = currentNumber;
+            // clears currentNumber
             currentNumber = '';
+            // sets operator to + for use in operate function
             operator = '+';
             outputPrevious.textContent = `${previousNumber} ${operator}`;
             outputCurrent.textContent = currentNumber;
@@ -70,6 +82,7 @@ add.addEventListener('click', () => {
 })
 
 subtract.addEventListener('click', () => {
+    // chaining operations
     if (previousNumber !== '' && currentNumber !== '') {
         previousNumber = operate(operator, Number(previousNumber), Number(currentNumber));
         currentNumber = '';
@@ -77,6 +90,7 @@ subtract.addEventListener('click', () => {
         outputPrevious.textContent = `${previousNumber} ${operator}`;
         outputCurrent.textContent = currentNumber;
     } else
+        // if currentNumber is not empty, set previousNumber to currentNumber and operator to -, display
         if (currentNumber !== '') {
             previousNumber = currentNumber;
             currentNumber = '';
@@ -87,6 +101,7 @@ subtract.addEventListener('click', () => {
 })
 
 multiply.addEventListener('click', () => {
+    // chaining operations
     if (previousNumber !== '' && currentNumber !== '') {
         previousNumber = operate(operator, Number(previousNumber), Number(currentNumber));
         currentNumber = '';
@@ -94,6 +109,7 @@ multiply.addEventListener('click', () => {
         outputPrevious.textContent = `${previousNumber} ${operator}`;
         outputCurrent.textContent = currentNumber;
     } else
+        // if currentNumber is not empty, set previousNumber to currentNumber and operator to *, display
         if (currentNumber !== '') {
             previousNumber = currentNumber;
             currentNumber = '';
@@ -104,6 +120,7 @@ multiply.addEventListener('click', () => {
 })
 
 divide.addEventListener('click', () => {
+    // chaining operations
     if (previousNumber !== '' && currentNumber !== '') {
         previousNumber = operate(operator, Number(previousNumber), Number(currentNumber));
         currentNumber = '';
@@ -111,6 +128,7 @@ divide.addEventListener('click', () => {
         outputPrevious.textContent = `${previousNumber} ${operator}`;
         outputCurrent.textContent = currentNumber;
     } else
+        //  if currentNumber is not empty, set previousNumber to currentNumber and operator to ÷, display
         if (currentNumber !== '') {
             previousNumber = currentNumber;
             currentNumber = '';
@@ -121,22 +139,28 @@ divide.addEventListener('click', () => {
 })
 
 equals.addEventListener('click', () => {
+    // if previousNumber and currentNumber are not empty, operate and display
     if (currentNumber !== '' && previousNumber !== '') {
+        // clears previousNumber
         outputPrevious.textContent = '';
+        // displays result of operate function
         outputCurrent.textContent = operate(operator, Number(previousNumber), Number(currentNumber));
         previousNumber = '';
         currentNumber = `${outputCurrent.textContent}`;
     }
 })
 
+// sets up clear 
 clear.addEventListener('click', () => {
+    // sets all variables to empty string
     outputPrevious.textContent = '';
     outputCurrent.textContent = '';
     previousNumber = '';
     currentNumber = '';
 })
-
+// clears last character from currentNumber
 backspace.addEventListener('click', () => {
+    // removes last character from currentNumber and displays
     currentNumber = currentNumber.slice(0, -1);
     outputCurrent.textContent = currentNumber;
 })
